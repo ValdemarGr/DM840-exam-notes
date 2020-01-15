@@ -66,3 +66,18 @@ $label(v) \leftarrow i, i \leftarrow i + 1$
   * Not all ambiguities can be resolved
 * Improved variants exist, but error rate is just reduced.
 
+## SMILES Notation
+### Goals
+1. Uniqueness of the description of the moleculegraph
+2. x-friendly/human readability
+3. machine-friendly
+### SMILES canon
+#### a) Initial graph state
+1. \# connections
+2. \# non-h 
+3. atomic number
+4. sign of charge
+5. assoc charge
+6. \# attended hydrogens
+
+#### c) Simple extened connectivity
