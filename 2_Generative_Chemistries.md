@@ -49,4 +49,15 @@ $$P_i = \left\{ p \in Q | P = \bigcup_{0 \leq j < i} P_j, t \in R: M(P, c_L (t))
 ## Reaction networks
 Output is directed hypergraph
 
-$$\{g_1, g_2\}=^p g_3$$
+$$\{g_1, g_2\}\Rightarrow^p g_3$$
+
+* **Morphism** transformation, preservation off nodes is not important.
+* **Monomorphism** nodewise transformation, preservation of nodes and edges must exist, but more edges can be added on the product.
+* **Subgraph isomorphism** For a chosen mapping, all nodes and fuck.
+* **Isomoprhism** two equal graphs
+
+Representationally equal = excact match.
+
+Some info from paper
+## ILP
+Ask Søren
