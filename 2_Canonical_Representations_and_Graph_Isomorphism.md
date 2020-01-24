@@ -210,3 +210,53 @@ to translate a node ($\pi$) to another (and back), then we don't have to check t
 #### Improvement 1
 Prune earlier (every nontrivial part has size 2).
 
+# Graph Isomorphism
+## Ullmann subgraph isomorphism
+Basically in pure Ullmann we wish to eliminate redundant or impossible permutations.
+
+We can do this with some matrix magic, eg by doing a DFS of potential mapping matricies, which means 1 if this $(i,j)$ maps between the subgraph and supergraph.
+
+Formally given $G_A$ as super and $G_B$ as sub.\
+$A$ and $B$ as adjacency matricies.
+
+$n = |V_A|$ and $m=|V_N|$ then permutation matrix can be given by $n * m$ matrix $M$.
+
+* $M$ exactly 1 $1$ on each row.
+* $M$ maximally 1 $1$ (can be purely 0) each column.
+
+Permute $B$ by multiplying by M.
+
+$M * B \rightarrow$ Move row $j$ to row $i \,\, \forall M_{i,j} = 1$ 
+
+* Initially we build start matrix $M^0$ by setting all values to 1.
+* Then remove impossible permutations: $0$ for all $M_{i,j}^0$ where $deg(B_j) < deg(A_i)$
+
+### Refinement procedure
+If all terminal nodes in $M$ namely $M'$, have $m'_{i,j} = 0$ then we can safely say $m_{i,j} = 0$.
+
+* $v_{ai}$ be the $i$'th point in $V_a$
+* $v_{bj}$ be the $j$'th point in $V_b$
+* $\{v_{a1}, ..., v_{ax}, ..,v_{ay}\}$ be points in $G_a$ that are adjacent to $v_a$
+* Considering $M'$, it must be that if $v_{ai} = v_{bj}$ then for each $x=1,...,y$ there must exist a point $v_{by}$ that is adjacent to $v_{bj}$ such that $v_{by}$ corrisponds to $v_{ax}$.
+* If $v_{by}$ corrisponds to $v_{ax}$ then element in $M'$ that corrisponds to $\{v_{ax},v_{by}\} = 1$.
+* Therefore if $v_{ai}$ corrisponds to $v_{bj}$ in any isomorphism under $M$ then for each $x = 1, .., y$ there must be a $1$ in $M$ corrisponding to some $\{v_{ax},v_{by}\}$ such that $v_{by}$ is adjacent to $v_{bj}$.
+
+For any $m_{ij} = 1$ such that the refinement is not satisfied: $m_{ij} = 0$.\
+Refinement runs on each $1$ in $M$, until an iteration is unfruitful (nothing changes).
+
+We must leave all $M'$ unchanged.\
+$M'$ specifies a $1:1$ mapping $V_a$ into $V_b$:\
+The general idea is if two points are adacent in $G_a$ then two corrosponding points in $G_b$ are adjacent.
+
+The refinement also specifies that if any $1$ in $M'$ changes to $0$, then $M'$ doesn't specify an isomorphism.
+
+During refinement, if any row loses all $0$'s, we instantly exist the algorithm with failure.
+
+Provable terminateable, because 1 can only change to 0.
+
+Paralellizable.
+
+Very very very many optimization features.
+
+## Mckay is the same, isomorphism is based on the automorphism groups.
+## Generative chemistry, rule matching (get creative).
